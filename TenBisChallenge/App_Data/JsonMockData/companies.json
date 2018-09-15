@@ -1,0 +1,42 @@
+﻿[
+  {
+    "companyId": 1,
+    "companyName": "Kwilith"
+  },
+  {
+    "companyId": 2,
+    "companyName": "Wikibox"
+  },
+  {
+    "companyId": 3,
+    "companyName": "Oodoo"
+  },
+  {
+    "companyId": 4,
+    "companyName": "Zava"
+  },
+  {
+    "companyId": 5,
+    "companyName": "Meembee"
+  },
+  {
+    "companyId": 6,
+    "companyName": "Dabfeed"
+  },
+  {
+    "companyId": 7,
+    "companyName": "Eire"
+  },
+  {
+    "companyId": 8,
+    "companyName": "Topiczoom"
+  },
+  {
+    "companyId": 9,
+    "companyName": "Aibox"
+  },
+  {
+    "companyId": 10,
+    "companyName": "Cogilith"
+  }
+]

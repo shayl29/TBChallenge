@@ -1,0 +1,105 @@
+﻿@model TenBisChallenge.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-sm-12" style="margin-top: 1%">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">Filter Reports</div>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("GetReport", "Home", FormMethod.Get, new { @class = "form-inline" }))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FilterInput.CompanyId, "Company", null)
+                        @Html.DropDownListFor(m => m.FilterInput.CompanyId, new SelectList(Model.Companies, "CompanyId", "CompanyName"), new { @class = "form-control" });
+                        @Html.ValidationMessageFor(m => m.FilterInput.CompanyId)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FilterInput.StartDate)
+                        @Html.EditorFor(m => m.FilterInput.StartDate, new { @class = "form-control", @type = "date" })
+                        @Html.ValidationMessageFor(m => m.FilterInput.StartDate)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FilterInput.EndDate)
+                        @Html.EditorFor(m => m.FilterInput.EndDate, new { @class = "form-control", @type = "date" })
+                        @Html.ValidationMessageFor(m => m.FilterInput.EndDate)
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" id="filterButton" data-reports="@Model.Reports" class="btn btn-primary">Filter</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">Reports</div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    @if (Model.Reports.Count == 0)
+                    {
+                        <p>No Entries Found</p>
+                    }
+                    else
+                    {
+                        <table class="table table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>User Id</th>
+                                    <th>User Full Name</th>
+                                    <th>PAN</th>
+                                    <th>Total Volume</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Reports)
+                                {
+                                    <tr>
+                                        <td>@item.UserId</td>
+                                        <td>@item.UserFullName</td>
+                                        <td>@item.Pan</td>
+                                        <td>@item.TotalVolume.ToString("N2")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">Charts Gets Here</div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group">
+                        <canvas data-chart="@Model.ChartJson" id="barChart" width="400" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/Chart.js"></script>
+    <script src="~/Scripts/ChartBuilder.js"></script>
+    <script>
+        var builder = new ChartBuilder("barChart", "bar");
+    </script>
+}
