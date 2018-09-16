@@ -8,6 +8,9 @@ namespace TenBisChallenge.Migrations
     using System.Data.Entity.Migrations;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Hosting;
     using TenBisChallenge.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TenBisChallenge.Models.DBContext>
@@ -27,17 +30,29 @@ namespace TenBisChallenge.Migrations
 
         private void SeedContext(DBContext context)
         {
-            var companies = GetResource<Company>(@"C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\App_Data\JsonMockData\companies.json");
+            var companies = GetResource<Company>(MapPath("~/App_Data/JsonMockData/companies.json"));
             context.Companies.AddOrUpdate(companies.ToArray());
 
-            var users = GetResource<User>(@"C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\App_Data\JsonMockData\users.json");
+            var users = GetResource<User>(MapPath("~/App_Data/JsonMockData/users.json"));
             context.Users.AddOrUpdate(users.ToArray());
 
-            var moneyCards = GetResource<MoneyCard>(@"C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\App_Data\JsonMockData\moneyCards.json");
+            var moneyCards = GetResource<MoneyCard>(MapPath("~/App_Data/JsonMockData/moneyCards.json"));
             context.MoneyCards.AddOrUpdate(moneyCards.ToArray());
 
-            var banks = GetResource<Bank>(@"C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\App_Data\JsonMockData\banks.json");
+            var banks = GetResource<Bank>(MapPath("~/App_Data/JsonMockData/banks.json"));
             context.Banks.AddOrUpdate(banks.ToArray());
+        }
+
+        private string MapPath(string seedFile)
+        {
+            if (HttpContext.Current != null)
+                return HostingEnvironment.MapPath(seedFile);
+
+            var absolutePath = new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath; //was AbsolutePath but didn't work with spaces according to comments
+            var directoryName = Path.GetDirectoryName(absolutePath);
+            var path = Path.Combine(directoryName, ".." + seedFile.TrimStart('~').Replace('/', '\\'));
+
+            return path;
         }
 
         private IEnumerable<T> GetResource<T>(string jsonFilePath)

@@ -93,4 +93,3 @@ C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\obj\Debug\TenBisChal
 C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\obj\Debug\TenBisChallenge.pdb
 C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\obj\Debug\TenBisChallenge.Migrations.FirstMigration.resources
 C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\obj\Debug\TenBisChallenge.csproj.GenerateResource.cache
-C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\obj\Debug\TenBisChallenge.csprojAssemblyReference.cache
