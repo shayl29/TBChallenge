@@ -1,6 +1,5 @@
 C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\obj\Debug\TenBisChallenge.csproj.CoreCompileInputs.cache
 C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\bin\ApplicationInsights.config
-C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\bin\TenBisChallenge.dll.config
 C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\bin\TenBisChallenge.dll
 C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\bin\TenBisChallenge.pdb
 C:\Users\shayl\source\repos\TenBisChallenge\TenBisChallenge\bin\roslyn\csc.exe
